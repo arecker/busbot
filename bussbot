@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 
 from selenium import webdriver
@@ -18,7 +19,9 @@ with open(secret_path, 'r') as stream:
     ZIP = data.get('zip', '')
     EMAIL = data.get('email', '')
     PHONE = data.get('phone', '')
-    CARD_NO = data.get('44444444', '')
+    CARD_NO = data.get('card_no', '')
+    CARD_MONTH = data.get('card_month', '')
+    CARD_YEAR = data.get('card_year', '')
 
 
 driver = webdriver.Firefox()
@@ -96,6 +99,19 @@ def select_payment_method():
 def fill_out_card_info():
     elem = driver.find_element_by_id('creditCardPaymMethod.creditCardNumber')
     elem.send_keys(CARD_NO)
+    month = driver.find_element_by_id('creditCardPaymMethod.creditCardExpMonth')
+    year = driver.find_element_by_id('creditCardPaymMethod.creditCardExpYear')
+    select_in_dropdown(month, CARD_MONTH)
+    select_in_dropdown(year, CARD_YEAR)
+
+
+
+def continue_from_card_info():
+    driver.find_element_by_id('continue').click()
+
+
+def confirm_payment():
+    driver.find_element_by_id('confirm').click()
 
 
 if __name__ == '__main__':
@@ -106,3 +122,5 @@ if __name__ == '__main__':
     fill_out_payment_info()
     select_payment_method()
     fill_out_card_info()
+    continue_from_card_info()
+    confirm_payment()
