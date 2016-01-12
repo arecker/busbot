@@ -1,6 +1,6 @@
-#+TITLE: bussbot
+#+TITLE: busbot
 
-A selenium script that orders me a new buss pass from Madison's
+A selenium script that orders me a new bus pass from Madison's
 transit website.
 
 [[https://www.cityofmadison.com/metro/images/header.jpg]]
@@ -13,7 +13,7 @@ transit website.
      sudo pip install -r requirements.txt
   #+END_SRC
 
-  Then move ~bussbot~ somewhere executable.  Currently, it expects to
+  Then move ~busbot~ somewhere executable.  Currently, it expects to
   be in the same directory as ~secrets.yml~.
 
 * Configuring
